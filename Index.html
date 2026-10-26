@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>預約貼膜 | 浪人汽車包膜施工預約</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts Inter & Noto Sans TC -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#f7f5f0', // Warm cream background
+              card: '#ffffff',
+              cardInner: '#f5f3ed',
+              dark: '#111111',
+              teal: '#1b7a63',
+              tealLight: '#eef8f5',
+              tealDark: '#135948',
+              accent: '#333333',
+              border: '#e5e2d9',
+              warningBg: '#fff8f6',
+              warningBorder: '#fcdcd7',
+              warningText: '#c53030'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f7f5f0;
+      color: #222222;
+      font-family: 'Noto Sans TC', 'Inter', sans-serif;
+    }
+    .custom-shadow {
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    }
+    /* Modal scrollbar styling */
+    .modal-body::-webkit-scrollbar {
+      width: 6px;
+    }
+    .modal-body::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 8px;
+    }
+    .modal-body::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 8px;
+    }
+    .modal-body::-webkit-scrollbar-thumb:hover {
+      background: #aaa;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-black text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
+    預約貼膜 | 浪人汽車包膜施工預約
+  </div>
+
+  <!-- Header / Navigation Bar -->
+  <header class="bg-[#f7f5f0] border-b border-gray-200/60 sticky top-0 z-30">
+    <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
+      <!-- Logo & Avatar -->
+      <a href="#" class="flex items-center space-x-2.5">
+        <div class="w-10 h-10 rounded-full bg-black text-white border border-gray-800 flex items-center justify-center shrink-0 shadow-sm">
+          <!-- Samurai/Ronin Inspired Helmet/Car Icon -->
+          <i class="fa-solid fa-car-side text-base text-emerald-400"></i>
+        </div>
+        <div class="leading-tight">
+          <h1 class="text-xl font-black tracking-wider text-gray-900">浪人</h1>
+          <p class="text-[10px] tracking-widest text-gray-500 font-bold">— 汽車包膜 —</p>
+        </div>
+      </a>
+
+      <!-- Right Nav Icons -->
+      <div class="flex items-center space-x-3">
+        <a href="https://facebook.com" target="_blank" rel="noreferrer" class="hover:opacity-80 transition text-[#1877f2]">
+          <i class="fa-brands fa-facebook fa-lg"></i>
+        </a>
+        <a href="https://youtube.com" target="_blank" rel="noreferrer" class="hover:opacity-80 transition text-[#ff0000]">
+          <i class="fa-brands fa-youtube fa-lg"></i>
+        </a>
+        <button id="menuBtn" class="text-gray-800 focus:outline-none ml-1">
+          <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-md mx-auto w-full px-3 py-4 space-y-6 flex-1">
+
+    <!-- Section 1: Quick Quote -->
+    <section class="bg-white rounded-2xl p-5 border border-gray-200/80 custom-shadow space-y-4">
+      <div>
+        <span class="text-xs font-bold tracking-wider text-brand-teal uppercase block">QUICK QUOTE</span>
+        <h2 class="text-2xl font-extrabold text-gray-900 mt-0.5">汽車包膜價格查詢</h2>
+        <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">
+          依序選擇品牌、車款、膜面質感與施工部位，立即可查看浪人專業團隊預估的含工帶料價格。
+        </p>
+      </div>
+
+      <!-- Quick Form -->
+      <div class="space-y-3 pt-1">
+        <!-- 品牌 Select -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 mb-1">汽車品牌</label>
+          <div class="relative">
+            <select id="quickBrand" class="w-full bg-[#f5f3ed] border border-gray-300 rounded-lg px-3 py-2.5 text-sm appearance-none font-medium text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+              <option value="">請選擇品牌</option>
+              <option value="BMW">寶馬 BMW</option>
+              <option value="Mercedes-Benz">賓士 Mercedes-Benz</option>
+              <option value="Porsche">保時捷 Porsche</option>
+              <option value="Tesla">特斯拉 Tesla</option>
+              <option value="Toyota">豐田 Toyota</option>
+              <option value="Lexus">雷克薩斯 Lexus</option>
+              <option value="Audi">奧迪 Audi</option>
+              <option value="Maserati">瑪莎拉蒂 Maserati</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- 車款 Select -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 mb-1">車款</label>
+          <div class="relative">
+            <select id="quickModel" class="w-full bg-[#f5f3ed] border border-gray-300 rounded-lg px-3 py-2.5 text-sm appearance-none font-medium text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none disabled:opacity-60" disabled>
+              <option value="">請選擇車款</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- 膜面質感 Select -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 mb-1">膜面質感 / 樣式</label>
+          <div class="relative">
+            <select id="quickFinish" class="w-full bg-[#f5f3ed] border border-gray-300 rounded-lg px-3 py-2.5 text-sm appearance-none font-medium text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+              <option value="">請選擇膜面</option>
+              <option value="亮面 TPU 頂級透明保護膜 (Gloss)">亮面 TPU 頂級透明保護膜 (Gloss)</option>
+              <option value="消光 TPU 緞面保護膜 (Matte)">消光 TPU 緞面保護膜 (Matte)</option>
+              <option value="鍛造碳纖維專屬紋理膜 (Forged Carbon)">鍛造碳纖維專屬紋理膜 (Forged Carbon)</option>
+              <option value="個性化彩繪改色膜 (Vinyl Wrap)">個性化彩繪改色膜 (Vinyl Wrap)</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- 部件 Select -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 mb-1">施工部位 / 套件</label>
+          <div class="relative">
+            <select id="quickPart" class="w-full bg-[#f5f3ed] border border-gray-300 rounded-lg px-3 py-2.5 text-sm appearance-none font-medium text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+              <option value="">請選擇施工部位</option>
+              <option value="全車全包防護" data-price="88000">全車全包防護 (Full Wrap)</option>
+              <option value="車頭迎風面防護" data-price="32000">車頭迎風面防護 ( Front Package )</option>
+              <option value="引擎蓋專用防護膜" data-price="9800">引擎蓋專用防護膜 (Hood Only)</option>
+              <option value="車頂黑化/防護" data-price="8500">車頂黑化/防護 (Roof Wrap)</option>
+              <option value="全車內裝螢幕與飾板" data-price="6800">全車內裝螢幕與飾板 (Interior Protection)</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Price Display Box -->
+        <div class="bg-brand-tealLight border border-emerald-100 rounded-lg p-3.5 mt-2">
+          <span class="text-xs font-semibold text-gray-600 block">含工帶料價格</span>
+          <div id="quickPriceText" class="text-xl font-bold text-brand-teal mt-0.5">
+            選完部位後顯示
+          </div>
+        </div>
+
+        <!-- Action Button -->
+        <button id="addToCartBtn" disabled class="w-full bg-[#aaa79d] text-white py-3 rounded-lg font-bold text-sm tracking-wide shadow-sm transition-all duration-200 cursor-not-allowed">
+          加入購物車並預約施工
+        </button>
+      </div>
+    </section>
+
+    <!-- Info Banner Cards -->
+    <section class="space-y-3">
+      <div class="bg-black text-white p-4 rounded-xl border border-gray-800 shadow">
+        <h3 class="text-lg font-bold tracking-wide">浪人頂級 TPU 膜材</h3>
+        <p class="text-xs text-gray-400 mt-1 leading-relaxed">抗刮耐黃變、超強撥水性能，日常微小細紋可透過太陽光熱補修淡化。</p>
+      </div>
+      <div class="bg-black text-white p-4 rounded-xl border border-gray-800 shadow">
+        <h3 class="text-lg font-bold tracking-wide">原廠 3D 數據專車版型</h3>
+        <p class="text-xs text-gray-400 mt-1 leading-relaxed">精準對應各知名品牌汽車部位，免拆車免刀裁，降大幅降低施工風險。</p>
+      </div>
+    </section>
+
+    <!-- Section 2: Booking Calendar -->
+    <section class="pt-2 space-y-4">
+      <div>
+        <span class="text-xs font-bold tracking-wider text-gray-500 uppercase block">BOOKING CALENDAR</span>
+        <h2 class="text-2xl font-extrabold text-gray-900 mt-0.5">未來 30 天施工預約狀況</h2>
+        <p class="text-xs text-gray-600 mt-2 leading-relaxed">
+          送出後將先保留「暫時預約」；完成定金付款且由浪人人工確認後才正式成立。送出預約當日 23:59 前未付款，系統將自動取消暫時預約。
+        </p>
+      </div>
+
+      <!-- Status Legend Badges -->
+      <div class="flex flex-wrap gap-2 text-xs font-medium py-1">
+        <span class="px-3 py-1 rounded-full bg-[#e3f4ee] text-brand-teal border border-emerald-200">可預約</span>
+        <span class="px-3 py-1 rounded-full bg-[#fde8e8] text-red-700 border border-red-200">已被預約</span>
+        <span class="px-3 py-1 rounded-full bg-[#fff4db] text-amber-800 border border-amber-200">暫時預定</span>
+        <span class="px-3 py-1 rounded-full bg-[#eef0f2] text-gray-600 border border-gray-300">無法預約</span>
+        <span class="px-3 py-1 rounded-full bg-[#f3e8ff] text-purple-700 border border-purple-200">公休</span>
+      </div>
+
+      <!-- Calendar Container -->
+      <div class="bg-[#f2efe6] p-2.5 rounded-2xl border border-gray-300/80">
+        <!-- Week Header Row -->
+        <div class="grid grid-cols-3 gap-2 mb-2">
+          <div class="bg-black text-white text-xs font-bold text-center py-2 rounded-lg">周一</div>
+          <div class="bg-black text-white text-xs font-bold text-center py-2 rounded-lg">周二</div>
+          <div class="bg-black text-white text-xs font-bold text-center py-2 rounded-lg">周三</div>
+        </div>
+
+        <!-- Dynamic Date Cards Grid -->
+        <div id="calendarGrid" class="grid grid-cols-3 gap-2">
+          <!-- JS dynamic generation -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-black text-gray-400 text-xs py-6 text-center border-t border-gray-800 mt-8">
+    <p>© 2026 浪人汽車包膜. All rights reserved.</p>
+  </footer>
+
+  <!-- Section 3: Booking Modal Popup -->
+  <div id="bookingModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 hidden transition-opacity">
+    
+    <div class="bg-white rounded-2xl w-full max-w-md max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-gray-100">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-gray-100 relative pb-3">
+        <span class="text-[11px] font-bold tracking-wider text-brand-teal uppercase block">RESERVATION</span>
+        <h3 id="modalTitle" class="text-2xl font-black text-gray-900 mt-0.5">預約 10/27 汽車施工</h3>
+        <p class="text-xs text-gray-600 mt-1 font-medium">全車包膜施工約需 2-3 工作天，進場時間以浪人通知為準。</p>
+
+        <button id="closeModalBtn" class="w-full mt-3 bg-white border border-gray-300 text-gray-800 text-xs font-bold py-2 rounded-lg hover:bg-gray-50 transition">
+          關閉
+        </button>
+      </div>
+
+      <!-- Modal Form Scrollable Area -->
+      <div class="p-5 overflow-y-auto space-y-4 modal-body flex-1 text-xs">
+        
+        <!-- Form Field: Name -->
+        <div>
+          <label class="block font-bold text-gray-800 mb-1">車主姓名 <span class="text-red-500">*</span></label>
+          <input type="text" id="custName" required placeholder="請輸入姓名" class="w-full bg-[#f8f7f4] border border-gray-300 rounded-lg p-2.5 text-sm text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+        </div>
+
+        <!-- Form Field: Phone -->
+        <div>
+          <label class="block font-bold text-gray-800 mb-1">聯絡電話 <span class="text-red-500">*</span></label>
+          <input type="tel" id="custPhone" required placeholder="0912345678" class="w-full bg-[#f8f7f4] border border-gray-300 rounded-lg p-2.5 text-sm text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+        </div>
+
+        <!-- Form Field: Email -->
+        <div>
+          <label class="block font-bold text-gray-800 mb-1">Email <span class="text-red-500">*</span></label>
+          <input type="email" id="custEmail" required placeholder="預約確認與狀態查詢連結會寄到這裡" class="w-full bg-[#f8f7f4] border border-gray-300 rounded-lg p-2.5 text-sm text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+        </div>
+
+        <!-- Form Field: Brand -->
+        <div>
+          <label class="block font-bold text-gray-800 mb-1">汽車品牌</label>
+          <div class="relative">
+            <select id="modalBrand" class="w-full bg-[#f8f7f4] border border-gray-300 rounded-lg p-2.5 text-sm appearance-none text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+              <option value="">請選擇品牌</option>
+              <option value="BMW">寶馬 BMW</option>
+              <option value="Mercedes-Benz">賓士 Mercedes-Benz</option>
+              <option value="Porsche">保時捷 Porsche</option>
+              <option value="Tesla">特斯拉 Tesla</option>
+              <option value="Toyota">豐田 Toyota</option>
+              <option value="Lexus">雷克薩斯 Lexus</option>
+              <option value="Audi">奧迪 Audi</option>
+              <option value="Maserati">瑪莎拉蒂 Maserati</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Form Field: Model -->
+        <div>
+          <label class="block font-bold text-gray-800 mb-1">車款</label>
+          <div class="relative">
+            <select id="modalModel" class="w-full bg-[#f8f7f4] border border-gray-300 rounded-lg p-2.5 text-sm appearance-none text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+              <option value="">請選擇車款</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Form Field: Finish -->
+        <div>
+          <label class="block font-bold text-gray-800 mb-1">膜面質感 / 樣式</label>
+          <div class="relative">
+            <select id="modalFinish" class="w-full bg-[#f8f7f4] border border-gray-300 rounded-lg p-2.5 text-sm appearance-none text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+              <option value="">請選擇膜面</option>
+              <option value="亮面 TPU 頂級透明保護膜 (Gloss)">亮面 TPU 頂級透明保護膜 (Gloss)</option>
+              <option value="消光 TPU 緞面保護膜 (Matte)">消光 TPU 緞面保護膜 (Matte)</option>
+              <option value="鍛造碳纖維專屬紋理膜 (Forged Carbon)">鍛造碳纖維專屬紋理膜 (Forged Carbon)</option>
+              <option value="個性化彩繪改色膜 (Vinyl Wrap)">個性化彩繪改色膜 (Vinyl Wrap)</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Form Field: Part -->
+        <div>
+          <label class="block font-bold text-gray-800 mb-1">施工部位 / 套件</label>
+          <div class="relative">
+            <select id="modalPart" class="w-full bg-[#f8f7f4] border border-gray-300 rounded-lg p-2.5 text-sm appearance-none text-gray-800 focus:ring-2 focus:ring-brand-teal focus:outline-none">
+              <option value="">請選擇施工部位</option>
+              <option value="全車全包防護" data-price="88000">全車全包防護 (Full Wrap)</option>
+              <option value="車頭迎風面防護" data-price="32000">車頭迎風面防護 ( Front Package )</option>
+              <option value="引擎蓋專用防護膜" data-price="9800">引擎蓋專用防護膜 (Hood Only)</option>
+              <option value="車頂黑化/防護" data-price="8500">車頂黑化/防護 (Roof Wrap)</option>
+              <option value="全車內裝螢幕與飾板" data-price="6800">全車內裝螢幕與飾板 (Interior Protection)</option>
+            </select>
+            <i class="fa-solid fa-sort text-xs text-gray-500 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Price Display Box in Modal -->
+        <div class="bg-brand-tealLight border border-emerald-100 rounded-lg p-3">
+          <span class="text-xs font-semibold text-gray-600 block">預估金額 (含工帶料)</span>
+          <div id="modalPriceText" class="text-lg font-bold text-brand-teal mt-0.5">
+            選完部位後顯示
+          </div>
+        </div>
+
+        <!-- Warning Notice Box -->
+        <div class="bg-brand-warningBg border border-brand-warningBorder rounded-xl p-3.5 space-y-2">
+          <h4 class="text-brand-warningText font-bold text-sm">送出前請注意</h4>
+          <p class="text-gray-800 text-[11px] leading-relaxed">
+            送出後將先保留「暫時預約」。完成定金付款且由浪人團隊人工確認排程後，預約才正式成立。
+          </p>
+          <p class="text-gray-800 text-[11px] leading-relaxed">
+            送出預約當日 23:59 前若仍未完成預約定金支付，系統將自動取消暫時預約。
+          </p>
+        </div>
+
+        <!-- Checkbox confirmation -->
+        <div class="bg-brand-tealLight border border-emerald-200/80 rounded-xl p-3 flex items-start space-x-2">
+          <input type="checkbox" id="termsCheck" class="mt-0.5 h-4 w-4 rounded border-gray-300 text-brand-teal focus:ring-brand-teal">
+          <label for="termsCheck" id="termsLabel" class="text-[11px] text-gray-800 leading-snug cursor-pointer font-medium">
+            我已確認預約日期為 <span id="confirmDateText" class="font-bold text-brand-teal">2026-10-27</span>，並了解進車施工時間將由浪人專員客服專人連繫確認。
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button id="submitBookingBtn" disabled class="w-full bg-[#aaa79d] text-white py-3 rounded-xl font-bold text-sm tracking-wide shadow transition-all duration-200 cursor-not-allowed">
+          確認時間並送出暫時預約
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Notification Box -->
+  <div id="successToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-2xl z-50 hidden flex items-center space-x-3 text-xs border border-gray-700">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+    <div>
+      <p class="font-bold">汽車包膜預約已成功送出！</p>
+      <p class="text-gray-400 text-[11px]">浪人團隊將儘快與您聯繫確認車款細節。</p>
+    </div>
+  </div>
+
+  <script>
+    // Car Brand -> Models Data Matrix
+    const carModels = {
+      'BMW': ['3 Series (G20/G21)', '4 Series Coupe', '5 Series (G60)', 'X5 / X6', 'M3 / M4 Competition', 'i4 / iX Electric'],
+      'Mercedes-Benz': ['C-Class', 'E-Class', 'S-Class', 'CLE Coupe', 'GLC SUV', 'G-Class (G63)', 'EQE / EQS SUV'],
+      'Porsche': ['911 Carrera / GT3', '718 Cayman / Boxster', 'Taycan / Taycan Cross', 'Cayenne / Coupe', 'Macan / Macan EV'],
+      'Tesla': ['Model 3 / Highland', 'Model Y', 'Model S / Plaid', 'Model X / Plaid', 'Cybertruck'],
+      'Toyota': ['GR Supra', 'GR Yaris / GR Corolla', 'RAV4 / Hybrid', 'Crown Crossover', 'Camry'],
+      'Lexus': ['RX 350 / 450h+', 'NX 200 / 350h', 'LM 350h / 500h', 'LC 500', 'IS 300 / 350'],
+      'Audi': ['A4 / S4 Avant', 'A6 / RS6 Avant', 'RS3 Sportback', 'e-tron GT / RS', 'Q5 / SQ5'],
+      'Maserati': ['Grecale GT / Modena', 'Ghibli', 'GranTurismo', 'MC20']
+    };
+
+    // Calendar mock data
+    const calendarDays = [
+      { dayOfWeek: '周一', dateStr: '10/26', fullDate: '2026-10-26', status: '可預約' },
+      { dayOfWeek: '周二', dateStr: '10/27', fullDate: '2026-10-27', status: '可預約' },
+      { dayOfWeek: '周三', dateStr: '10/28', fullDate: '2026-10-28', status: '可預約' },
+      
+      { dayOfWeek: '周一', dateStr: '11/2',  fullDate: '2026-11-02', status: '可預約' },
+      { dayOfWeek: '周二', dateStr: '11/3',  fullDate: '2026-11-03', status: '可預約' },
+      { dayOfWeek: '周三', dateStr: '11/4',  fullDate: '2026-11-04', status: '可預約' },
+      
+      { dayOfWeek: '周一', dateStr: '11/9',  fullDate: '2026-11-09', status: '已被預約' },
+      { dayOfWeek: '周二', dateStr: '11/10', fullDate: '2026-11-10', status: '暫時預定' },
+      { dayOfWeek: '周三', dateStr: '11/11', fullDate: '2026-11-11', status: '可預約' },
+
+      { dayOfWeek: '周一', dateStr: '11/16', fullDate: '2026-11-16', status: '無法預約' },
+      { dayOfWeek: '周二', dateStr: '11/17', fullDate: '2026-11-17', status: '公休' },
+      { dayOfWeek: '周三', dateStr: '11/18', fullDate: '2026-11-18', status: '可預約' },
+    ];
+
+    let selectedBookingDate = '2026-10-27';
+    let selectedShortDate = '10/27';
+
+    // DOM Elements
+    const quickBrand = document.getElementById('quickBrand');
+    const quickModel = document.getElementById('quickModel');
+    const quickFinish = document.getElementById('quickFinish');
+    const quickPart = document.getElementById('quickPart');
+    const quickPriceText = document.getElementById('quickPriceText');
+    const addToCartBtn = document.getElementById('addToCartBtn');
+
+    const modalBrand = document.getElementById('modalBrand');
+    const modalModel = document.getElementById('modalModel');
+    const modalFinish = document.getElementById('modalFinish');
+    const modalPart = document.getElementById('modalPart');
+    const modalPriceText = document.getElementById('modalPriceText');
+
+    const bookingModal = document.getElementById('bookingModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalTitle = document.getElementById('modalTitle');
+    const confirmDateText = document.getElementById('confirmDateText');
+    const termsCheck = document.getElementById('termsCheck');
+    const submitBookingBtn = document.getElementById('submitBookingBtn');
+
+    // Populate Models based on Brand
+    function updateModelOptions(brandSelect, modelSelect, targetValue = '') {
+      const brand = brandSelect.value;
+      modelSelect.innerHTML = '<option value="">請選擇車款</option>';
+      if (brand && carModels[brand]) {
+        carModels[brand].forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m;
+          opt.textContent = m;
+          modelSelect.appendChild(opt);
+        });
+        modelSelect.disabled = false;
+        if(targetValue) modelSelect.value = targetValue;
+      } else {
+        modelSelect.disabled = true;
+      }
+    }
+
+    // Dynamic Price Calculation
+    function updatePrice(partSelect, priceContainer, btnToEnable) {
+      const selectedOption = partSelect.options[partSelect.selectedIndex];
+      const price = selectedOption ? selectedOption.getAttribute('data-price') : null;
+      if (price) {
+        const formatted = Number(price).toLocaleString('zh-TW');
+        priceContainer.textContent = `$${formatted} TWD 起`;
+        priceContainer.classList.add('text-2xl');
+        if (btnToEnable) {
+          btnToEnable.disabled = false;
+          btnToEnable.classList.remove('bg-[#aaa79d]', 'cursor-not-allowed');
+          btnToEnable.classList.add('bg-brand-teal', 'hover:bg-brand-tealDark', 'cursor-pointer');
+        }
+      } else {
+        priceContainer.textContent = '選完部位後顯示';
+        if (btnToEnable) {
+          btnToEnable.disabled = true;
+          btnToEnable.classList.add('bg-[#aaa79d]', 'cursor-not-allowed');
+          btnToEnable.classList.remove('bg-brand-teal', 'hover:bg-brand-tealDark', 'cursor-pointer');
+        }
+      }
+    }
+
+    // Synchronize Quick Quote to Modal Form
+    function syncQuickToModal() {
+      modalBrand.value = quickBrand.value;
+      updateModelOptions(modalBrand, modalModel, quickModel.value);
+      modalFinish.value = quickFinish.value;
+      modalPart.value = quickPart.value;
+      updatePrice(modalPart, modalPriceText);
+    }
+
+    // Render Calendar Cards
+    function renderCalendar() {
+      const grid = document.getElementById('calendarGrid');
+      grid.innerHTML = '';
+
+      calendarDays.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl p-3 border border-gray-200/90 flex flex-col justify-between space-y-2 text-center shadow-sm hover:border-gray-400 transition';
+
+        let badgeStyle = 'bg-[#e3f4ee] text-brand-teal';
+        let isBookable = true;
+
+        if (item.status === '已被預約') {
+          badgeStyle = 'bg-[#fde8e8] text-red-700';
+          isBookable = false;
+        } else if (item.status === '暫時預定') {
+          badgeStyle = 'bg-[#fff4db] text-amber-800';
+          isBookable = false;
+        } else if (item.status === '無法預約') {
+          badgeStyle = 'bg-[#eef0f2] text-gray-500';
+          isBookable = false;
+        } else if (item.status === '公休') {
+          badgeStyle = 'bg-[#f3e8ff] text-purple-700';
+          isBookable = false;
+        }
+
+        const buttonHtml = isBookable 
+          ? `<button onclick="openModalWithDate('${item.fullDate}', '${item.dateStr}')" class="w-full bg-brand-teal hover:bg-brand-tealDark text-white font-bold py-2 rounded-lg text-xs transition duration-150">我要預約</button>`
+          : `<button disabled class="w-full bg-gray-200 text-gray-400 font-bold py-2 rounded-lg text-xs cursor-not-allowed">不可預約</button>`;
+
+        card.innerHTML = `
+          <div>
+            <div class="text-[11px] text-gray-500 font-medium">${item.dayOfWeek}</div>
+            <div class="text-2xl font-black text-gray-900 tracking-tight my-0.5">${item.dateStr}</div>
+            <div class="text-[10px] text-gray-400 font-mono">${item.fullDate}</div>
+          </div>
+          <div class="space-y-2">
+            <span class="inline-block px-2.5 py-1 rounded-full text-[11px] font-bold ${badgeStyle}">${item.status}</span>
+            ${buttonHtml}
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    // Modal Operations
+    window.openModalWithDate = function(fullDate, shortDate) {
+      selectedBookingDate = fullDate;
+      selectedShortDate = shortDate;
+      
+      modalTitle.textContent = `預約 ${shortDate} 汽車施工`;
+      confirmDateText.textContent = fullDate;
+      
+      syncQuickToModal();
+      bookingModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    };
+
+    function closeModal() {
+      bookingModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // Event Listeners
+    quickBrand.addEventListener('change', () => updateModelOptions(quickBrand, quickModel));
+    modalBrand.addEventListener('change', () => updateModelOptions(modalBrand, modalModel));
+
+    quickPart.addEventListener('change', () => updatePrice(quickPart, quickPriceText, addToCartBtn));
+    modalPart.addEventListener('change', () => updatePrice(modalPart, modalPriceText));
+
+    addToCartBtn.addEventListener('click', () => {
+      openModalWithDate(selectedBookingDate, selectedShortDate);
+    });
+
+    closeModalBtn.addEventListener('click', closeModal);
+
+    // Terms checkbox controls button enable state
+    termsCheck.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        submitBookingBtn.disabled = false;
+        submitBookingBtn.classList.remove('bg-[#aaa79d]', 'cursor-not-allowed');
+        submitBookingBtn.classList.add('bg-brand-teal', 'hover:bg-brand-tealDark', 'cursor-pointer');
+      } else {
+        submitBookingBtn.disabled = true;
+        submitBookingBtn.classList.add('bg-[#aaa79d]', 'cursor-not-allowed');
+        submitBookingBtn.classList.remove('bg-brand-teal', 'hover:bg-brand-tealDark', 'cursor-pointer');
+      }
+    });
+
+    // Form Submission Handler
+    submitBookingBtn.addEventListener('click', () => {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const email = document.getElementById('custEmail').value.trim();
+
+      if (!name || !phone || !email) {
+        alert('請完整填寫必填欄位 (車主姓名、聯絡電話、Email)');
+        return;
+      }
+
+      closeModal();
+
+      // Show toast
+      const toast = document.getElementById('successToast');
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 4000);
+    });
+
+    // Click backdrop to close
+    bookingModal.addEventListener('click', (e) => {
+      if (e.target === bookingModal) closeModal();
+    });
+
+    // Initialize
+    window.onload = function() {
+      renderCalendar();
+    };
+  </script>
+</body>
+</html>
